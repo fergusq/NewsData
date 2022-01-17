@@ -1,0 +1,16 @@
+FROM secoresearch/finer
+
+WORKDIR /app
+COPY server.py ./
+COPY finer.py ./
+
+ENV GUNICORN_WORKER_AMOUNT 4
+ENV GUNICORN_TIMEOUT 300
+ENV GUNICORN_RELOAD ""
+
+EXPOSE 3000
+
+USER 9008
+
+ENTRYPOINT [ "/run.sh" ]
+
